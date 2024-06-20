@@ -92,6 +92,11 @@ updateMapData();
       <span>{{ toRaw(selectedHour).toString() }}</span>
     </div>
     <div class="map-container">
+      <div v-if="!dataLoaded" class="loading-overlay">
+        <div class="loading-message">
+          LOADING DATA
+        </div>
+      </div>
       <GoogleMap
         :api-key="googleMapsApiKey"
         :libraries="['visualization']"
@@ -109,6 +114,28 @@ updateMapData();
 .map-container {
   width: 1200px;
   height: 800px;
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.loading-message {
+  font-size: 2em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .navbar {
