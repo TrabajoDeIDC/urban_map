@@ -42,6 +42,7 @@ async function updateMapData() {
   console.log("About to update map data with " + dataType + " data");
   try {
     let data = await getData();
+    console.log(data);
     let newData = [];
     if (data !== null) {
       
@@ -62,8 +63,8 @@ async function updateMapData() {
         const finalWeight = relatedValue/(60-timestamp);
         newData.push({ location: locations.at(index), weight: finalWeight })
       });
-    }false
-      
+    }
+    console.log(newData);
     mapData.value = newData;
     dataLoaded.value = true;
   } catch (error) {
@@ -104,7 +105,7 @@ updateMapData();
         :center="valencia"
         :zoom="14"
       >
-      <HeatmapLayer :options="{ data: toRaw(mapData), radius: 50, dissipating: true }" />
+      <HeatmapLayer :options="{ data: toRaw(mapData), radius: 50, dissipating: false }" />
       </GoogleMap>
     </div>
   </div>
