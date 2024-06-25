@@ -62,7 +62,7 @@ async function updateMapData() {
         const finalWeight = relatedValue/(60-timestamp);
         newData.push({ location: locations.at(index), weight: finalWeight })
       });
-    }false
+    }
       
     mapData.value = newData;
     dataLoaded.value = true;
